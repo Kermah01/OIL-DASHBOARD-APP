@@ -32,7 +32,7 @@ df=read_excel_file("Base Pétrole finale.xlsx")
 coord_géo= read_excel_file("Coordonnées géographiques Blocs.xlsx")
 with open("GéoJson Blocs pétroliers.json") as f:
   counties = json.load(f)
-
+st.sidebar.image('https://upload.wikimedia.org/wikipedia/commons/9/9d/Coat_of_Arms_of_the_Ivory_Coast.svg', use_column_width='always')
  #Définition des ordres de mois et des jours
 order_of_months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
 dic_month={1:"Janvier",2:"Février",3:"Mars",4:"Avril",5:"Mai",6:"Juin",7:"Juillet",8:"Août",9:"Septembre",10:"Octobre",11:"Novembre",12:"Décembre"}
