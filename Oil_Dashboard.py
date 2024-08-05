@@ -32,7 +32,7 @@ df=read_excel_file("Base Pétrole finale.xlsx")
 coord_géo= read_excel_file("Coordonnées géographiques Blocs.xlsx")
 with open("GéoJson Blocs pétroliers.json") as f:
   counties = json.load(f)
-st.sidebar.image('https://upload.wikimedia.org/wikipedia/commons/9/9d/Coat_of_Arms_of_the_Ivory_Coast.svg', use_column_width='always')
+st.sidebar.image('https://static.vecteezy.com/system/resources/thumbnails/010/248/729/original/national-emblem-coat-of-arms-or-symbol-of-ivory-coast-in-waving-flag-smooth-4k-seemless-loop-free-video.jpg', use_column_width='always')
 st.sidebar.subheader("Cabinet du Ministre de l'Economie, du Plan et du Développement", divider="orange")
 
  #Définition des ordres de mois et des jours
