@@ -28,9 +28,9 @@ def read_excel_file(file):
     donnees = donnees[1:]
     new_df = pd.DataFrame(donnees, columns=en_tetes)
     return new_df
-df=read_excel_file(r"C:\Users\MIVS\Desktop\Dashboard petroleum Data\Base Pétrole finale.xlsx")
-coord_géo= read_excel_file(r"C:\Users\MIVS\Desktop\Dashboard petroleum Data\Coordonnées géographiques Blocs.xlsx")
-with open(r"C:\Users\MIVS\Desktop\Dashboard petroleum Data\GéoJson Blocs pétroliers.json") as f:
+df=read_excel_file("Base Pétrole finale.xlsx")
+coord_géo= read_excel_file("Coordonnées géographiques Blocs.xlsx")
+with open("GéoJson Blocs pétroliers.json") as f:
   counties = json.load(f)
 
  #Définition des ordres de mois et des jours
