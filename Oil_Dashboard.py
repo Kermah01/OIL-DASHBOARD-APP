@@ -364,7 +364,7 @@ with qual:
     'Patenaires CPP 3 (hors PETROCI)', 'Statut du bloc','Mois  de signature du 1er CPP', 'Année  de signature du 1er CPP', 'Année  de la 2ème signature du CPP', 
     'Mois  de la 2ème signature du CPP', "Mois  de fin de validité d'exploration 1", "Année  de fin de validité d'exploration 1", 
     "Année  de fin de validité d'exploration 2", "Mois  de fin de validité d'exploration 2",'Mois  de fin de validité exploitation 1',
-    'Année  de fin de validité exploitation 1'],index=1)
+    'Année  de fin de validité exploitation 1'],index=2)
     st.sidebar.write(" ")
     st.sidebar.write(" ")
     st.sidebar.subheader("PARAMETRES DES GRAPHIQUES")
