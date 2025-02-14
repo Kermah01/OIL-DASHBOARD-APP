@@ -312,6 +312,7 @@ with cam:
     # ✅ Nettoyer et compter les catégories
     df[selected_categorical_variable_p] = df[selected_categorical_variable_p].astype(str).str.strip()
     category_counts = df[selected_categorical_variable_p].value_counts(normalize=True) * 100
+    category_counts = category_counts.reset_index()
     category_counts.columns = ['Category', 'Count']
     
     # ✅ Afficher les résultats avant le graphique
