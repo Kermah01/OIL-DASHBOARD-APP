@@ -306,34 +306,24 @@ with cam:
     'Patenaires (hors PETROCI)', 'Opérateur CPP 2',
     'Patenaires CPP 2 (hors PETROCI)', 'Opérateur CPP 3',
     'Patenaires CPP 3 (hors PETROCI)', 'Statut du bloc'], index=1)
-    if 'category_counts' in st.session_state:
-        del st.session_state['category_counts']
-
-    # Nettoyage de la variable catégorielle
+    # 🚨 Nettoyage
+    st.cache_data.clear()
+    
+    # ✅ Nettoyer et compter les catégories
     df[selected_categorical_variable_p] = df[selected_categorical_variable_p].astype(str).str.strip()
+    category_counts = df[selected_categorical_variable_p].value_counts().reset_index()
+    category_counts.columns = ['Category', 'Count']
     
-    # Calcul des comptes avec dropna() pour éviter les problèmes
-    category_counts = df[selected_categorical_variable_p].value_counts(dropna=True)
+    # ✅ Afficher les résultats avant le graphique
+    st.write("Comptes des catégories :", category_counts)
     
-    # Vérification des résultats dans Streamlit
-    st.write("Comptes des catégories (après nettoyage):", category_counts)
-    
-    # Création d'un DataFrame explicite pour Plotly
-    category_df = pd.DataFrame({
-        'Category': category_counts.index,
-        'Count': category_counts.values
-    })
-    
-    # 🚨 DEBUG : Afficher le DataFrame intermédiaire
-    st.write("DataFrame pour Plotly:", category_df)
-    
-    # Création du camembert avec le DataFrame
+    # ✅ Création du camembert avec un DataFrame explicite
     fig_pie = px.pie(
-        data_frame=category_df,
+        data_frame=category_counts,
         names='Category',
         values='Count',
-        title=f"Répartition de la variable {selected_categorical_variable_p}",
-        color_discrete_sequence=colors
+        title=f"Répartition de {selected_categorical_variable_p}",
+        hole=0.3
     )
     fig_pie.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0.3)',},title_x=0.05)
     st.plotly_chart(fig_pie, use_container_width=True)
