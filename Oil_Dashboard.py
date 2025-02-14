@@ -307,8 +307,8 @@ with cam:
     'Patenaires CPP 2 (hors PETROCI)', 'Opérateur CPP 3',
     'Patenaires CPP 3 (hors PETROCI)', 'Statut du bloc'], index=1)
     category_counts = df[selected_categorical_variable_p].value_counts()
-    st.write("Comptes des catégories :", category_counts)
-    fig_pie = px.pie(names=category_counts.index, values=category_counts.values, title=f"Répartition de la variable {selected_categorical_variable_p}",color_discrete_sequence=colors)
+    category_df = pd.DataFrame({'Category': category_counts.index,'Count': category_counts.values})
+    fig_pie = px.pie(category_df,names='Category',values='Count',title=f"Répartition de la variable {selected_categorical_variable_p}",color_discrete_sequence=colors)
     fig_pie.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0.3)',},title_x=0.25)
     st.plotly_chart(fig_pie, use_container_width=True)
 
