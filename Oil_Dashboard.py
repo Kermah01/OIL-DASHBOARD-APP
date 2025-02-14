@@ -306,27 +306,9 @@ with cam:
     'Patenaires (hors PETROCI)', 'Opérateur CPP 2',
     'Patenaires CPP 2 (hors PETROCI)', 'Opérateur CPP 3',
     'Patenaires CPP 3 (hors PETROCI)', 'Statut du bloc'], index=1)
-    # 🚨 Nettoyage
-    st.cache_data.clear()
-    
-    # ✅ Nettoyer et compter les catégories
-    df[selected_categorical_variable_p] = df[selected_categorical_variable_p].astype(str).str.strip()
-    category_counts = df[selected_categorical_variable_p].value_counts(normalize=True) * 100
-    category_counts = category_counts.reset_index()
-    category_counts.columns = ['Category', 'Count']
-    
-    # ✅ Afficher les résultats avant le graphique
-    st.write("Comptes des catégories :", category_counts)
-    
-    # ✅ Création du camembert avec un DataFrame explicite
-    fig_pie = px.pie(
-        data_frame=category_counts,
-        names='Category',
-        values='Count',
-        title=f"Répartition de {selected_categorical_variable_p}",
-        hole=0.3
-    )
-    fig_pie.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0.3)',},title_x=0.05)
+    category_counts = df[selected_categorical_variable_p].value_counts()
+    fig_pie = px.pie(names=category_counts.index, values=category_counts.values, title=f"Répartition de la variable {selected_categorical_variable_p}",color_discrete_sequence=colors)
+    fig_pie.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(0, 0, 0, 0.3)',},title_x=0.25)
     st.plotly_chart(fig_pie, use_container_width=True)
 
 with hist:
