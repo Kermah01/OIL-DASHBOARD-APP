@@ -307,7 +307,7 @@ with cam:
     'Patenaires CPP 2 (hors PETROCI)', 'Opérateur CPP 3',
     'Patenaires CPP 3 (hors PETROCI)', 'Statut du bloc'], index=1)
     if 'category_counts' in st.session_state:
-    del st.session_state['category_counts']
+        del st.session_state['category_counts']
 
     # Nettoyage de la variable catégorielle
     df[selected_categorical_variable_p] = df[selected_categorical_variable_p].astype(str).str.strip()
